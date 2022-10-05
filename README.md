@@ -1,5 +1,5 @@
 # freenect-python3-howto
-How to compile freenect in debian 11 and python3
+How to compile freenect in debian 11 and python3.This is valid for Kinect v1 (XBOX 360), the old one ;-)
 
 ## Prerequisites
 
