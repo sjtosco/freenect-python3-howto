@@ -3,9 +3,12 @@ How to compile freenect in debian 11 and python3.This is valid for Kinect v1 (XB
 
 ## Prerequisites
 
-sudo apt install freeglut3-dev libusb-1.0-0-dev libopengl-dev -y
+```
+sudo apt install freeglut3-dev libusb-1.0-0-dev libopengl-dev cmake -y
+```
 
 ## Build and install
+``` bash
 git clone https://github.com/OpenKinect/libfreenect
 cd libfreenect
 mkdir build
@@ -13,6 +16,7 @@ cd build
 cmake .. -DBUILD_PYTHON3=ON -DCYTHON_EXECUTABLE=/usr/bin/cython3 -DPython3_EXACTVERSION=3.9.2
 make -j4
 sudo make install
+```
 
 ### Fixes
 
