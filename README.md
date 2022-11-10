@@ -22,7 +22,15 @@ sudo make install
 
 For use freenect in global python3 interpreter:
 
-`sudo ln -s /usr/local/lib/python3/dist-packages/freenect.so /usr/local/lib/python3.9/dist-packages/`
+```
+sudo ln -s /usr/local/lib/python3/dist-packages/freenect.so /usr/local/lib/python3.9/dist-packages/
+```
+
+If trows "ImportError: libfreenect_sync.so.0: cannot open shared object file: No such file or directory"
+
+```
+sudo cp /usr/local/lib/libfreenect.* /usr/lib/ 
+```
 
 For use in virtualenv, when use virtualenvwrapper:
 
