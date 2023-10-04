@@ -5,6 +5,7 @@ How to compile freenect in debian 11 and python3.This is valid for Kinect v1 (XB
 
 ```
 sudo apt install freeglut3-dev libusb-1.0-0-dev libopengl-dev cmake -y
+sudo pip install numpy
 ```
 
 ## Build and install
