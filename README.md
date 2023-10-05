@@ -40,6 +40,34 @@ workon my-venv
 add2virtualenv /usr/local/lib/python3/dist-packages/
 ```
 
+For ubuntu users, to gain access over the kinect without root privileges
+
+> ```bash
+> sudo adduser $USER video
+> ```
+> 
+> Then create a the rules for the divice
+> 
+> ```bash
+> sudo nano /etc/udev/rules.d/51-kinect.rules
+> ```
+> Paste this
+> 
+> ```
+> # ATTR{product}=="Xbox NUI Motor"
+> SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02b0", MODE="0666"
+> # ATTR{product}=="Xbox NUI Audio"
+> SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02ad", MODE="0666"
+> # ATTR{product}=="Xbox NUI Camera"
+> SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02ae", MODE="0666"
+> # ATTR{product}=="Xbox NUI Motor"
+> SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02c2", MODE="0666"
+> # ATTR{product}=="Xbox NUI Motor"
+> SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02be", MODE="0666"
+> # ATTR{product}=="Xbox NUI Motor"
+> SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02bf", MODE="0666"
+> ```
+
 ## Uninstall
 
 `sudo make uninstall`
