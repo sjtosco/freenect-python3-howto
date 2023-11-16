@@ -5,6 +5,7 @@ How to compile freenect in debian 11 and python3.This is valid for Kinect v1 (XB
 
 ```
 sudo apt install freeglut3-dev libusb-1.0-0-dev libopengl-dev cmake -y
+sudo pip install numpy
 ```
 
 ## Build and install
@@ -29,7 +30,7 @@ sudo ln -s /usr/local/lib/python3/dist-packages/freenect.so /usr/local/lib/pytho
 If trows "ImportError: libfreenect_sync.so.0: cannot open shared object file: No such file or directory"
 
 ```
-sudo cp /usr/local/lib/libfreenect.* /usr/lib/ 
+sudo cp /usr/local/lib/libfreenect* /usr/lib/ 
 ```
 
 For use in virtualenv, when use virtualenvwrapper:
@@ -38,6 +39,34 @@ For use in virtualenv, when use virtualenvwrapper:
 workon my-venv
 add2virtualenv /usr/local/lib/python3/dist-packages/
 ```
+
+For ubuntu users, to gain access over the kinect without root privileges
+
+> ```bash
+> sudo adduser $USER video
+> ```
+> 
+> Then create a the rules for the divice
+> 
+> ```bash
+> sudo nano /etc/udev/rules.d/51-kinect.rules
+> ```
+> Paste this
+> 
+> ```
+> # ATTR{product}=="Xbox NUI Motor"
+> SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02b0", MODE="0666"
+> # ATTR{product}=="Xbox NUI Audio"
+> SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02ad", MODE="0666"
+> # ATTR{product}=="Xbox NUI Camera"
+> SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02ae", MODE="0666"
+> # ATTR{product}=="Xbox NUI Motor"
+> SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02c2", MODE="0666"
+> # ATTR{product}=="Xbox NUI Motor"
+> SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02be", MODE="0666"
+> # ATTR{product}=="Xbox NUI Motor"
+> SUBSYSTEM=="usb", ATTR{idVendor}=="045e", ATTR{idProduct}=="02bf", MODE="0666"
+> ```
 
 ## Uninstall
 
